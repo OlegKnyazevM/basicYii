@@ -15,7 +15,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>Please fill out the following fields to login:</p>
 
-    <?php $form = ActiveForm::begin([
+    <?php $form = ActiveForm::begin(
+            [
         'id' => 'login-form',
         'layout' => 'horizontal',
         'fieldConfig' => [
@@ -24,7 +25,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'inputOptions' => ['class' => 'col-lg-3 form-control'],
             'errorOptions' => ['class' => 'col-lg-7 invalid-feedback'],
         ],
-    ]); ?>
+    ]
+    ); ?>
 
         <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
 

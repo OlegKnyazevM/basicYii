@@ -6,17 +6,29 @@ use yii\helpers\Html;
 
 <h1> TEST ACTION</h1>
 
+<?php if (Yii::$app->session->hasFlash('success')):?>
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <?php echo Yii::$app->session->getFlash('success');?>
+    </div>
+<?php endif;?>
 
-<?php $form = ActiveForm::begin() ?>
-<?php $form->field($model, 'name')->textInput()?>
-<?php $form->field($model, 'email')->textInput()?>
-<?php $form->field($model, 'text')->checkbox([
-    'template' => "<div class=\"offset-lg-1 col-lg-3 custom-control custom-checkbox\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
-]) ?>
+<?php if (Yii::$app->session->hasFlash('error')):?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <?php echo Yii::$app->session->getFlash('error');?>
+    </div>
+<?php endif;?>
+
+
+<?php  $form = ActiveForm::begin(['options' =>['id' => 'testForm']]) ?>
+<?php echo $form->field($model, 'name')->textInput()->label('Имя')?>
+<?php echo $form->field($model, 'email')->input('email')?>
+<?php echo $form->field($model, 'text')->textarea()->label('Текст сообщенния')?>
 
 <div class="form-group">
     <div class="col-lg-offset-1 col-lg-11">
-        <?= Html::submitButton('Вход', ['class' => 'btn btn-primary']) ?>
+        <?php echo Html::submitButton('Вход', ['class' => 'btn btn-primary']) ?>
     </div>
 </div>
 <?php ActiveForm::end()?>

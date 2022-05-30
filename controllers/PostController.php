@@ -27,6 +27,16 @@ public $layout = 'basic';
             return 'test';
         }
         $model = new TestForm();
+
+        if ($model->load(Yii::$app->request->post()) ){
+            if ($model -> validate()){
+                Yii::$app->session->setFlash('success', 'данные приняты');
+                return $this->refresh();
+            } else {
+                Yii::$app->session->setFlash('error', 'error');
+            }
+        }
+
         return $this->render('test', compact('model'));
     }
 
