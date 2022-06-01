@@ -1,6 +1,8 @@
 <?php
 
 namespace app\controllers;
+use app\models\Model;
+use app\models\Shop;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -9,6 +11,8 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\TestForm;
+
+
 class PostController extends AppController {
 public $layout = 'basic';
 
@@ -44,7 +48,9 @@ public $layout = 'basic';
        $this->view->title ='Одна статья';
        $this->view->registerMetaTag(['name' => 'keywords', 'content' => 'ключевики...']);
         $this->view->registerMetaTag(['name' => 'description', 'content' => 'описание страницы...']);
-//        $this ->layout = 'basic';
-        return $this->render('show');
+
+        $cats = Shop::find()->all();
+
+        return $this->render('show',compact('cats'));
     }
 }

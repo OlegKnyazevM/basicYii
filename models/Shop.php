@@ -4,14 +4,14 @@ namespace app\models;
 
 use yii\db\ActiveRecord;
 
-class Products extends ActiveRecord
+class Shop extends ActiveRecord
 {
     public static function tableName()
     {
-        return 'products';
+        return 'shoping';
     }
 
-    public function getProducts(){
-        return $this->hasMany(Products::className(), []);
+    public function getShop(){
+        return $this->hasMany(Shop::className(), ['user_id' => 'id']);
     }
 }
