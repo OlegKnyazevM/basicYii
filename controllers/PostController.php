@@ -1,15 +1,8 @@
 <?php
 
 namespace app\controllers;
-use app\models\Model;
 use app\models\Shop;
 use Yii;
-use yii\filters\AccessControl;
-use yii\web\Controller;
-use yii\web\Response;
-use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\ContactForm;
 use app\models\TestForm;
 
 
@@ -30,10 +23,27 @@ public $layout = 'basic';
             $this->debug(Yii::$app->request->post());
             return 'test';
         }
+//получение строки
+        //        $post = TestForm::findOne(2);
+//изменение строки
+//        $post->email = 'save@save.com';
+//        $post->save();
+// удаление строки
+//        $post->delete();
+ //Удаление всех данных таблицы
+        //       TestForm::deleteAll()
+
         $model = new TestForm();
+//        $model ->name = 'Автор';
+//        $model ->email = 'mail@mail.com';
+//        $model ->text = 'First push in database';
+//        $model->save();
+
+
+
 
         if ($model->load(Yii::$app->request->post()) ){
-            if ($model -> validate()){
+            if ($model -> save()){
                 Yii::$app->session->setFlash('success', 'данные приняты');
                 return $this->refresh();
             } else {

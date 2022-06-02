@@ -25,6 +25,7 @@ use yii\helpers\Html;
 <?php echo $form->field($model, 'name')->textInput()->label('Имя')?>
 <?php echo $form->field($model, 'email')->input('email')?>
 <?php echo $form->field($model, 'text')->textarea()->label('Текст сообщенния')?>
+<?= yii\jui\DatePicker::widget(['name' => 'attributeName']) ?>
 
 <div class="form-group">
     <div class="col-lg-offset-1 col-lg-11">

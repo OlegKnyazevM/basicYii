@@ -1,21 +1,28 @@
+<?php
+use app\components\MyWidget;
+?>
+
 <?php $this->beginBlock('Block1') ?>
 <h1> Заголовок страницы </h1>
 <?php $this->endBlock()?>
 
 <h3>Show action</h3>
-<?php foreach ($cats as $cat){
-    echo '<ul>';
-    echo '<li>'. $cat->user_id. '</li>';
-//    $models = $cat->id;
-//    foreach ($models as $model){
-//        echo '<ul>';
-//        echo '<li>'. $model->id . '</li>';
-//        echo '</ul>';
-//    }
-    echo '</ul>';
-}
+<?php //echo MyWidget::widget(['name' => 'Vasya']);?>
+<?php MyWidget::begin()?>
+<h1>Привет мир</h1>
+<?php MyWidget::end()?>
 
-    ?>
+<?php //foreach ($cats as $cat){
+//    echo '<ul>';
+//    echo '<li>'. $cat->user_id. '</li>';
+////    $models = $cat->id;
+////    foreach ($models as $model){
+////        echo '<ul>';
+////        echo '<li>'. $model->id . '</li>';
+////        echo '</ul>';
+////    }
+//    echo '</ul>';
+//}?>
 
 <?php //debug($cats);?>
 <?php //echo count($cats[0]->shop);?>
@@ -50,4 +57,4 @@
 //JS;
 
 //$this->registerJS($js);
-?>
+//?>
